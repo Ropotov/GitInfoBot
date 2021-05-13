@@ -27,7 +27,7 @@ public class Bot extends TelegramLongPollingBot {
 
     public  void sendMsg(Message message,String text){
         SendMessage sendMessage = new SendMessage();
-        sendMessage.enableMarkdown(true);
+        sendMessage.enableMarkdown(false);
         sendMessage.setChatId(message.getChatId());
         sendMessage.setReplyToMessageId(message.getMessageId());
         sendMessage.setText(text);
@@ -74,10 +74,12 @@ public class Bot extends TelegramLongPollingBot {
 
         List<KeyboardRow> keyboardRowList = new ArrayList<>();
         KeyboardRow keyboardFirstRow= new KeyboardRow();
+        KeyboardRow keyboardDoubleRow= new KeyboardRow();
         keyboardFirstRow.add(new KeyboardButton("/help"));
-        keyboardFirstRow.add(new KeyboardButton("/setting"));
+        keyboardDoubleRow.add(new KeyboardButton("/setting"));
 
         keyboardRowList.add(keyboardFirstRow);
+        keyboardRowList.add(keyboardDoubleRow);
         replyKeyboardMarkup.setKeyboard(keyboardRowList);
 
     }
